@@ -86,7 +86,7 @@ $errors = isset($_SESSION['errors']) ? $_SESSION['errors'] : [];
         require("./components/input-field.php");
         ?>
 
-        <button class="px-3 py-2 bg-violet-700 hover:bg-violet-600 text-white rounded-md w-full mb-5 cursor-pointer">Register</button>
+        <button class="px-3 py-2 mt-2 bg-violet-700 hover:bg-violet-600 text-white rounded-md w-full mb-5 cursor-pointer">Register</button>
       </form>
       <p class="text-center">Already have an account? <span class="text-violet-700 font-bold underline">Login</span></p>
     </div>

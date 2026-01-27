@@ -52,6 +52,37 @@ class Register extends Database
       $_SESSION['errors'] = $this->errors;
 
       header("Location: ../register.php");
+      die();
     }
+  }
+
+  public function save()
+  {
+    $query = "INSERT INTO users (first_name, last_name, email, password, created_at, updated_at)
+    VALUES ('$this->firstName','$this->lastName','$this->email','$this->password',NOW(),NOW())";
+
+    $result = $this->sql->query($query);
+
+    if ($result) {
+      echo "User registered successfully";
+    } else {
+      echo "Error: " . $this->sql->error;
+    }
+
+    $this->authenticate();
+  }
+
+  private function authenticate()
+  {
+    $query = "SELECT * FROM users WHERE email = '$this->email' LIMIT 1";
+
+    $result = $this->sql->query($query);
+
+    $user = $result->fetch_assoc();
+
+    $_SESSION['user'] = $user;
+
+    header("Location: ../home.php");
+    die();
   }
 }

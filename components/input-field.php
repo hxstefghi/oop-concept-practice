@@ -4,6 +4,8 @@
 
 <p class="text-red-500 mt-1 mb-3">
   <?php
-  echo $errors[$attribute['id']];
+  if (isset($_SESSION['errors'])) {
+    echo $errors[$attribute['id']];
+  }
   ?>
 </p>

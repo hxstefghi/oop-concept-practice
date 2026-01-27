@@ -1,0 +1,2 @@
+January 27, 2026
+- tama yung sinabi ni sir danniel sa training na mahalaga na maglagay palagi ng die() or exit() para ma-stop mo yung script at hindi na magpatuloy yung function na yun. it causes bugs pala talaga kasi na experience ko siya ngayon sa register doon sa function sa loob ng class. nag g-go thru siya sa database Kahit na empty yung field.

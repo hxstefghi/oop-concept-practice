@@ -4,6 +4,7 @@ session_start();
 
 $errors = isset($_SESSION['errors']) ? $_SESSION['errors'] : [];
 
+session_destroy();
 ?>
 
 <!DOCTYPE html>
@@ -18,21 +19,8 @@ $errors = isset($_SESSION['errors']) ? $_SESSION['errors'] : [];
 </head>
 
 <body>
-  <header class="py-6">
-    <nav class="max-w-7xl mx-auto">
-      <div class="flex justify-between items-center">
-        <h1 class="text-3xl">Logo</h1>
 
-        <div class="space-x-6">
-          <a href="#">Home</a>
-          <a href="#">Profile</a>
-          <a href="#">Create Post</a>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <section class="py-6">
+  <section class="py-12">
     <div class="max-w-sm mx-auto">
       <h1 class="text-3xl mb-12 text-center">Register your account</h1>
       <form action="./routes/register.php" method="POST">
@@ -88,7 +76,11 @@ $errors = isset($_SESSION['errors']) ? $_SESSION['errors'] : [];
 
         <button class="px-3 py-2 mt-2 bg-violet-700 hover:bg-violet-600 text-white rounded-md w-full mb-5 cursor-pointer">Register</button>
       </form>
-      <p class="text-center">Already have an account? <span class="text-violet-700 font-bold underline">Login</span></p>
+      <p class="text-center">Already have an account?
+        <a href="./login.php">
+          <span class="text-violet-700 font-bold underline">Login</span>
+        </a>
+      </p>
     </div>
   </section>
 </body>

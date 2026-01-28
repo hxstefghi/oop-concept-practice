@@ -25,9 +25,9 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : [];
         <h1 class="text-3xl">Logo</h1>
 
         <div class="space-x-6">
-          <a href="#">Home</a>
+          <a href="./home.php">Home</a>
           <a href="#">Profile</a>
-          <a href="./create-post.php">Create Post</a>
+          <a href="#">Create Post</a>
           <a href="./logout.php">Logout</a>
         </div>
       </div>
@@ -35,12 +35,21 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : [];
   </header>
 
   <section class="py-6">
-    <div class="max-w-xl mx-auto">
-      <h1 class="text-3xl font-bold">Profile</h1>
+    <div class="max-w-2xl mx-auto">
+      <h1 class="text-3xl font-bold">Create Post</h1>
       <div class="mt-4">
-        <p><span class="font-bold">ID: </span> <?php echo $user['id']  ?> </p>
-        <p><span class="font-bold">Name: </span> <?php echo $user['first_name'] . " " . $user['last_name'] ?> </p>
-        <p><span class="font-bold">Email: </span> <?php echo $user['email'] ?> </p>
+        <form action="" method="POST">
+          <div class="flex flex-col">
+            <label for="title" class="mb-2">Title</label>
+            <input type="text" name="title" id="title" placeholder="Post Title" class="py-2 px-3 outline-1 outline-gray-700 rounded-lg mb-4">
+
+            <label for="body" class="mb-2">Body</label>
+            <textarea name="body" id="body" placeholder="Post Body" class="px-3 py-2 outline-1 outline-gray-700 rounded-lg" rows="7">
+            </textarea>
+
+            <button class="px-3 py-2 rounded-lg bg-violet-700 hover:bg-violet-600 text-white mt-4 cursor-pointer">Submit</button>
+          </div>
+        </form>
       </div>
     </div>
   </section>

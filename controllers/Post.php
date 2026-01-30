@@ -16,13 +16,16 @@ class Post extends Database
 
     session_start();
 
-    $this->user_id = $_POST['user_id'];
-    $this->title = $_POST['title'];
-    $this->body = $_POST['body'];
+    // Only validate if POST data exists (form submission)
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['title'])) {
+      $this->user_id = $_POST['user_id'];
+      $this->title = $_POST['title'];
+      $this->body = $_POST['body'];
 
-    $this->errors = [];
+      $this->errors = [];
 
-    $this->validate();
+      $this->validate();
+    }
   }
 
   private function validate()
@@ -58,5 +61,17 @@ class Post extends Database
       echo "Error: " . $this->sql->error;
       die();
     }
+  }
+
+  public function getAllPosts()
+  {
+    $query = "SELECT posts.*, users.first_name, users.last_name, users.email 
+              FROM posts
+              LEFT JOIN users ON posts.user_id = users.id
+              ORDER BY posts.created_at DESC";
+
+    $result = $this->sql->query($query);
+
+    return $result->fetch_all(MYSQLI_ASSOC);
   }
 }

@@ -8,7 +8,7 @@ use controllers\Database;
 class Post extends Database
 {
 
-  private $title, $body, $errors;
+  private $user_id, $title, $body, $errors;
 
   public function __construct()
   {
@@ -16,6 +16,7 @@ class Post extends Database
 
     session_start();
 
+    $this->user_id = $_POST['user_id'];
     $this->title = $_POST['title'];
     $this->body = $_POST['body'];
 
@@ -45,7 +46,7 @@ class Post extends Database
 
   public function save()
   {
-    $query = "INSERT INTO posts (title, content, created_at, updated_at) VALUES ('$this->title', '$this->body',NOW(),NOW())";
+    $query = "INSERT INTO posts (user_id, title, content, created_at, updated_at) VALUES ('$this->user_id','$this->title', '$this->body',NOW(),NOW())";
     $result = $this->sql->query($query);
 
     if ($result) {

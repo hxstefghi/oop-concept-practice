@@ -41,16 +41,17 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : [];
       <div class="mt-4">
         <form action="./routes/create-post.php" method="POST">
           <div class="flex flex-col">
+            <input type="hidden" name="user_id" id="user_id" value="<?php echo $user['id'] ?>">
             <label for="title" class="mb-2">Title</label>
-            <input type="text" name="title" id="title" placeholder="Post Title" class="py-2 px-3 outline-1 outline-gray-700 rounded-lg mb-4">
-            <p class="text-red-500">
+            <input type="text" name="title" id="title" placeholder="Post Title" class="py-2 px-3 outline-1 outline-gray-700 rounded-lg mb-1">
+            <p class="text-red-500 mb-3">
               <?php if (isset($_SESSION['errors']['title'])) {
                 echo $_SESSION['errors']['title'];
               } ?>
             </p>
 
             <label for="body" class="mb-2">Body</label>
-            <textarea name="body" id="body" placeholder="Post Body" class="px-3 py-2 outline-1 outline-gray-700 rounded-lg" rows="7"></textarea>
+            <textarea name="body" id="body" placeholder="Post Body" class="px-3 py-2 outline-1 outline-gray-700 rounded-lg mb-1" rows="7"></textarea>
             <p class="text-red-500">
               <?php if (isset($_SESSION['errors']['body'])) {
                 echo $_SESSION['errors']['body'];
